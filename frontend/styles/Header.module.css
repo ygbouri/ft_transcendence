@@ -1,0 +1,349 @@
+.topBar {
+  z-index: 99;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  margin-left: 7rem;
+  padding: 2rem 3rem;
+  padding-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  background-color: #4267b2;
+}
+
+.tmpctn {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.NotifIcon {
+  position: relative;
+  display: inline-block !important;
+  width: 3.1rem !important;
+  height: 3.1rem !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  margin-left: auto;
+  margin-right: 2.667rem;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  cursor: pointer;
+}
+
+.dot {
+  position: absolute;
+  z-index: 2;
+  top: .09rem;
+  right: .3rem;
+  width: 1.037rem;
+  height: 1.037rem;
+  background-color: #EF476F;
+  border-radius: 50%;
+}
+
+.ctnNotif {
+  z-index: 3;
+  position: absolute;
+  top: 3rem;
+  right: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  padding: 1.111rem;
+  cursor: auto;
+  border: 2px solid white;
+  background-color: #7895cb;
+  border-radius: 15px;
+  box-shadow: 5px 5px 25px rgba(28, 28, 30, 0.8);
+  width: max-content;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: max-content;
+  max-height: 36rem;
+}
+
+.notifTitle {
+  display: block;
+  font-size: 1rem;
+  color: #C6E1FF;
+  margin-bottom: .1rem;
+}
+
+.notif {
+  padding: 1.111rem;
+  border-radius: 5px;
+  width: max-content;
+  display: flex;
+  flex-direction: column;
+  gap: 1.111rem;
+}
+
+.notif:hover {
+  background-color: #213555;
+  border: 2px solid white;
+  border-radius: 10px;
+}
+
+.notifContent {
+  display: flex;
+  align-items: center;
+}
+
+.avatar_notif {
+  overflow: hidden;
+  width: 5.333rem;
+  height: 5.333rem;
+  border-radius: 5px;
+}
+
+
+.searchIcon {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  margin-left: 10px;
+	width: 1.8rem;
+	height: 1.8rem;
+}
+
+.searchInput {
+	border-radius: 0.333rem;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 1.4rem;
+	line-height: 22px;
+	width: 90%;
+	color: #e7eaee;
+	background-color: transparent;
+	margin-left: 1.8rem;
+}
+
+.searchInput::placeholder {
+	color: #ffffff;
+}
+
+.searchInput:focus,
+.searchInput:active {
+	outline: none;
+}
+
+.inputContainer {
+  padding: 5px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	width: 40%;
+  height: 44px;
+	max-width: 76.667rem;
+  border-radius: 35px;
+  /* border: 2px solid white; */
+  background-color: #c5bdbda1;
+}
+
+.inputContainer:focus-within {
+    border: 2px solid white;
+    background-color: #4267b2;
+}
+
+.avatar_notif {
+  overflow: hidden;
+  width: 5.333rem;
+  height: 5.333rem;
+  border-radius: 5px;
+}
+
+.nameAndcontent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 1.333rem;
+}
+
+.nameAndcontent > h1 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.556rem;
+  line-height: 1.8rem;
+  color: #ffffff;
+}
+
+.nameAndcontent > p {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 200;
+  font-size: 1.556rem;
+  line-height: 1.8rem;
+  color: #ffffff;
+}
+
+.read {
+  color: #bfbfbf !important;
+}
+
+.btnContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.667rem;
+}
+
+.btnContainer > span {
+  border: 2px solid #758293;
+  border-radius: 4px;
+  padding: 0.7rem;
+  width: 10rem;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  color: #758293;
+  text-align: center;
+}
+
+.btnContainer > span:last-child {
+  border-color: #409cff;
+  color: #409cff;
+}
+
+.btnContainer > span:hover {
+  background-color: transparent;
+  color: #758293;
+}
+
+.btnContainer > span:last-child:hover {
+  background-color: #409cff;
+  color: #fff;
+}
+
+.avatarContainer {
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-self: center;
+  position: relative;
+  width: max-content;
+}
+
+.avatar {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+}
+
+.DropDown {
+  width: max-content;
+  height: max-content;
+  position: absolute;
+  top: 4.9rem;
+  right: 0;
+  padding: 1.267rem;
+  background: #4267b2;
+  border: 2px solid white;
+  border-radius: 8px;
+}
+
+.Icon {
+  margin-right: 14px;
+}
+
+.LogOut {
+  text-transform: uppercase;
+  letter-spacing: 0.16875rem;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.2rem;
+  line-height: 17px;
+  color: white;
+  padding: 0.7rem 2rem;
+  display: flex;
+}
+
+.LogOut:hover {
+  background: #c3c3c7;
+  color: black;
+  border-radius: 5px;
+}
+
+@media only screen and (max-width: 1000px) {
+  .ctnNotif {
+    padding: 0.9rem;
+    max-height: 30rem;
+  }
+  .notif {
+    padding: 0.9rem;
+  }
+  .btnContainer {
+    gap: 1.5rem;
+  }
+
+  .avatar_notif {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+
+  .nameAndcontent {
+    padding-left: 1rem;
+  }
+
+  .nameAndcontent > h1 {
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+  }
+
+  .nameAndcontent > p {
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+  }
+
+  .btnContainer > span {
+    padding: 0.4rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 880px) {
+  .DropDown {
+    top: 5.8rem;
+  }
+
+  .userName {
+    display: none;
+  }
+
+  .avatarContainer {
+    background-color: transparent;
+  }
+
+  .DropDown {
+    width: max-content;
+    height: max-content;
+  }
+
+  .avatar {
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 4.375rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .ctnNotif {
+    right: 0;
+  }
+  .topBar {
+    margin-left: 0;
+    padding-top: 2rem;
+  }
+}

@@ -1,0 +1,274 @@
+.profileCtn {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: flex-start;
+  padding-bottom: 1rem;
+}
+
+.profile {
+  border: 2px solid white;
+  background-color: #7895cb;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  padding: 1.333rem 2rem 1.333rem 2rem;
+  justify-content: space-between;
+}
+
+.editBtn {
+  background-color: transparent;
+  text-align: right;
+  margin: 0 0 1rem 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.editBtn > button {
+  background-color: transparent;
+  border: 2px solid white;
+  border-radius: 5px;
+  padding: 0.8rem;
+  line-height: 14.52px;
+  font-size: 1.067rem;
+  font-weight: 600;
+  font-family: "inter", sans-serif;
+  display: flex;
+  justify-self: flex-end;
+  align-items: center;
+  cursor: pointer;
+}
+
+.editBtn > button span {
+  background-color: transparent;
+  padding-left: 1.2rem;
+}
+
+.editBtn > span {
+  text-align: right;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.4rem;
+  line-height: 22px;
+  color: white;
+}
+
+.optionBtnFriend {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.optionBtnFriend > span {
+  text-align: right;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.4rem;
+  line-height: 22px;
+  color: white;
+}
+
+.options {
+  display: flex;
+}
+
+.DotOption {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3.111rem;
+  height: 3.111rem;
+  margin-left: 1.111rem;
+  cursor: pointer;
+}
+
+.name {
+  padding-left: 1.333rem;
+  background-color: transparent;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 2.133rem;
+  line-height: 3.778rem;
+  margin-bottom: 1.111rem;
+  color: #eff3fe;
+  letter-spacing: 0.2625rem;
+}
+
+.nameFriend {
+  padding-left: 1.333rem;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 2.133rem;
+  line-height: 3.778rem;
+  margin-bottom: 1.111rem;
+  color: #eff3fe;
+  letter-spacing: 0.2625rem;
+}
+
+.status,
+.lvl,
+.gp,
+.login,
+.tier {
+  letter-spacing: 0.15rem;
+  padding-left: 1.333rem;
+  font-size: 1.267rem;
+  line-height: 1.667rem;
+  font-family: inherit;
+  color: #eff3fe;
+  margin: 0;
+  padding-bottom: 0.533rem;
+  background-color: transparent;
+}
+
+.loginColor {
+  font-weight: 600;
+}
+
+.avatarContainer {
+  position: relative;
+  display: inline-block;
+}
+
+.avatar {
+  width: 13.333rem;
+  height: 13.333rem;
+  border-radius: 18.75rem;
+  border: 2px solid white;
+  background-color: transparent;
+  overflow: hidden;
+}
+
+.statusCircle {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.profileSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: left;
+}
+
+.UserStatus {
+  color: #c6e1ff;
+}
+
+.profileInfo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: transparent;
+  padding: 1.5rem 0;
+}
+
+.tierIcon {
+  background-color: transparent;
+  margin-left: auto;
+  align-items: center;
+  width: 10.333rem !important;
+  height: 10.333rem !important;
+}
+.nameAndStatus {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+@media only screen and (min-width: 1800px) {
+  .statusCircle {
+    bottom: 12px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+  .profile {
+    width: 100%;
+  }
+
+  .buttom {
+    background-color: transparent;
+    height: 1rem;
+    width: 100%;
+    order: 5;
+  }
+  .statusCircle {
+    position: absolute;
+    bottom: 8px;
+    right: 10px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: 2px solid white;
+  }
+}
+
+@media only screen and (max-width: 710px) {
+  .tierIcon {
+    display: none;
+  }
+
+  .profileInfo {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .profileSection {
+    align-items: center;
+    padding: 0;
+  }
+
+  .profileSection .name {
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    margin-top: 0.333rem;
+  }
+
+  .profileSection .name,
+  .profileSection .lvl,
+  .profileSection .gp,
+  .profileSection .login,
+  .profileSection .tier {
+    padding: 0 0 0.333rem 0;
+  }
+
+  .editBtn > button span {
+    display: none;
+  }
+  .statusCircle {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .profileCtn {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+
+  .buttom {
+    height: 5.5rem;
+  }
+  .statusCircle {
+    width: 20px;
+    height: 20px;
+  }
+}

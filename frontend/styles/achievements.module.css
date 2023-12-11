@@ -1,0 +1,106 @@
+.achievements {
+  border: 2px solid white;
+  background-color: #7895cb;
+  border-radius: 15px;
+  width: calc(30% - 1.5rem);
+  padding: 1.333rem 1.467rem 1.2rem 1.867rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.badge {
+  width: 5.556rem !important;
+  height: 5.35rem !important;
+}
+
+.title {
+  background-color: transparent;
+  color: white;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.4rem;
+  line-height: 22px;
+  margin-bottom: 1.6rem;
+}
+
+.ctnScroll {
+  overflow-y: auto;
+  max-height: 21.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  height: 100%;
+}
+
+.achievementctn {
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: #213555;
+  border: 2px solid white;
+  border-radius: 8px;
+  padding: 0.333rem 0.933rem;
+  margin-right: 0.333rem;
+}
+
+
+.achievement {
+  background-color: transparent;
+  padding-left: 1.773rem;
+}
+
+.achievementTitle {
+  background-color: transparent;
+  font-family: "Knewave";
+  font-size: 1.225rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.1875rem;
+  color: white;
+}
+
+.noAchievements {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 1rem;
+}
+
+.noAchievements>span {
+  text-align: center;
+  color: #758293;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 1.5rem;
+  line-height: 15px;
+}
+
+
+.disc {
+  background-color: transparent;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 0.9rem;
+  line-height: 15px;
+  color: #d9d9d9;
+  margin-top: 0.5rem;
+}
+
+@media only screen and (max-width: 1300px) {
+  .achievements {
+    order: 2;
+    max-height: 536px;
+    width: 100%;
+  }
+
+  .disc {
+    margin-top: 0.01rem;
+  }
+}

@@ -1,0 +1,17 @@
+.ChatContainer {
+    max-width: 100%;
+    height: 90%;
+    font-family: 'Inter';
+    background-color: #7895cb;
+    border: 2px solid white;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (min-width: 600px) {
+    .ChatContainer {
+        height: 98%;    
+    }
+} 

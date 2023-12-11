@@ -1,0 +1,49 @@
+version: "3.7"
+
+services:
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    image: nextjs
+    depends_on:
+      - "backend"
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+
+  backend:
+    build: ./backend
+    container_name: backend
+    image: nestjs
+    depends_on:
+      - "db"
+    ports:
+      - "5000:5000"
+      - "5551:5551"
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+
+  db:
+    image: postgres
+    container_name: pg
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - ft_transcendence:/var/lib/postgresql/data
+      - ./backend/db.sql:/docker-entrypoint-initdb.d/db.sql
+    env_file:
+      - ./backend/.env
+
+  adminer:
+    depends_on:
+      - db
+    image: adminer
+    ports:
+      - 8080:8080
+
+volumes:
+  ft_transcendence:

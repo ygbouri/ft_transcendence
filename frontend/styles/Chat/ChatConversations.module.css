@@ -1,0 +1,50 @@
+.ChatConversations {
+  font-size: 16px;
+  width: 30%;
+  height: 100%;
+  padding: 1.75rem 0;
+  background-color: #7895cb;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.ChatConvHeader {
+  width: 100%;
+  height: fit-content;
+  padding: 1.75rem 2.25rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.AddChannelicn {
+  cursor: pointer;
+}
+
+.Conversationlist {
+  height: calc(100% - 12rem);
+  margin-top: 1.5rem;
+  padding: 0 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  overflow-y: scroll;
+}
+
+.Conversationlist::-webkit-scrollbar {
+  width: 0rem;
+  margin: 0;
+  padding: 0;
+}
+
+.ChatConversations > p {
+  width: 100%;
+  font-weight: 500;
+  font-size: 2rem;
+  color: #c6e1ff;
+  text-align: center;
+  padding-top: 10%;
+}

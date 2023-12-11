@@ -1,0 +1,26 @@
+.parag {
+  position: absolute;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  top: 50%;
+
+  color: #fff;
+  text-align: center;
+  font-family: "Inter";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 2.4px;
+  text-transform: uppercase;
+}
+
+.dark {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #4267b2;
+}

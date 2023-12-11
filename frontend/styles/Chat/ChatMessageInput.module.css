@@ -1,0 +1,60 @@
+.ChatMsgSendBoxContainer {
+  height: 4rem;
+  width: 100%;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.ChatMsgSendBoxContainer img {
+  height: 2.2rem;
+  width: 2.2rem;
+  cursor: pointer;
+}
+
+.ChatMsgSendBox {
+  height: 54px;
+  width: 100%;
+  border-radius: 14px;
+  border: 2px solid white;
+  background-color: #5c87c0;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 20px;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.ChatMsgSendBox input {
+  height: auto;
+  width: 88%;
+  background-color: transparent;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 1.4rem;
+  padding-left: 20px;
+}
+
+.ChatMsgSendBox input::placeholder {
+  color: #ffffff;
+}
+
+.ChatBlockedSendBox {
+  height: 100%;
+  width: 100%;
+  padding: 0.6rem;
+  border-radius: 5px;
+  background-color: transparent;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

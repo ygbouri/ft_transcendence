@@ -1,0 +1,144 @@
+.background {
+  background-color: #0000009b;
+  position: absolute;
+  z-index: 999998;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popUpCtn {
+  background-color: white;
+  z-index: 999999;
+  width: 40rem;
+  top: 70%;
+  left: 50%;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1.6rem;
+  filter: none;
+  transition: all 0.2s ease-in-out;
+  border: 2px solid black;
+  border-radius: 8px;
+}
+
+.cross {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.titlePopUp {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.333rem;
+  line-height: 24px;
+  color: black;
+  margin-bottom: 1.867rem;
+  align-self: flex-start;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.avatar {
+	width: 7rem;
+	height: 7rem;
+	margin-bottom: 1.6rem;
+	cursor: pointer;
+	position: relative;
+	overflow: hidden;
+	border: 2px solid rgb(197, 192, 192);
+	border-radius: 18.75rem;
+}
+
+.UserName {
+	align-self: flex-start;
+	font-family: "Inter";
+	font-style: normal;
+	font-weight: 500;
+	font-size: 1.2rem;
+	line-height: 22px;
+	color: black;
+	margin-bottom: 1rem;
+}
+
+.UserNameInput {
+	padding: 0.9rem;
+	width: 100%;
+	background: #d3d3d3;
+	font-family: "Inter";
+	font-style: normal;
+	font-weight: 500;
+	font-size: 1.2rem;
+	line-height: 22px;
+	color: black;
+	margin-bottom: 1.133rem;
+	border-radius: 0.75rem;
+}
+
+.UserNameInput:active,
+.UserNameInput:focus {
+  outline: none !important;
+}
+
+.popUpCtn > p {
+  align-self: flex-start;
+  margin-bottom: 1rem;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 0.8rem;
+  line-height: 1rem;
+  color: #ff6482;
+}
+
+.btnSave {
+	background: #3db642;
+	width: 100%;
+	text-align: center;
+	font-family: "Inter";
+	font-size: 1.5rem;
+	font-weight: 500;
+	line-height: normal;
+	letter-spacing: 0.15rem;
+	text-transform: uppercase;
+	font-style: normal;
+	color: #ffffff;
+	padding: 0.9rem;
+	cursor: pointer;
+	border-radius: 0.9375rem;
+	border: 1px solid #000;
+}
+
+.inputHide {
+  cursor: pointer;
+  z-index: 3;
+  opacity: 0 !important;
+}
+
+.toggle {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: all 0.2s ease-in-out;
+}
+
+.avatar:hover > .toggle {
+  opacity: 1;
+  transition: all 0.2s ease-in-out;
+}

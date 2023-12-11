@@ -1,0 +1,283 @@
+import Styles from "@styles/Chat/CreateChannel.module.css";
+import UploadIcon from "../../public/FriendIcons/UploadIcon.svg";
+import Eye from "@public/Chat/Eye.svg";
+import CloseEye from "@public/Chat/Eye-closed.svg";
+import { InsertChannelMembers } from "./InserChannelMembers";
+import { useState, useReducer, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
+import { ChannelData } from "@Types/dataTypes";
+import { fetchCreateChannel, fetchUpdateChannel } from "@hooks/useFetchData";
+import { useRouter } from "next/router";
+import { getImageBySize, useOutsideAlerter } from "@hooks/Functions";
+import { FiX } from "react-icons/fi";
+
+const chnlError: { [key: string]: string } = {
+  channelName: "invalid Channel Name",
+  channelPassword:
+    "Password must contain at least 8 characters.At least one number, one uppercase letter and one special character",
+  channelMembers: "Channel Members must contain at least 1 member",
+};
+
+const reducer = (state: any, action: any) => {
+  switch (action.type) {
+    case "avatar":
+      return { ...state, avatar: action.avatar };
+    case "name":
+      return { ...state, name: action.name };
+    case "type":
+      return { ...state, type: action.chnltype };
+    case "password":
+      return { ...state, password: action.password };
+    case "members":
+      return { ...state, members: action.members };
+  }
+};
+
+export const validPassword = RegExp(
+  /^(?=(.*[a-z]){1,})(?=(.*[A-Z]){1,})(?=(.*[0-9]){1,})(?=(.*[!@#$%^&*()\-__+.]){1,}).{8,}$/
+);
+
+export const validName = RegExp(
+  /^(?=.{2,}$)(?![ _.-])(?!.*[_.-]{2})[a-zA-Z0-9 ._-]+(?<![ _.-])$/
+);
+
+interface Props {
+  isUpdate: boolean;
+  convId?: string;
+  initialChnlState: ChannelData;
+  CloseChannelHandler: () => void;
+  updateConversations: (msgConvId: string) => void;
+}
+
+export const CreateChannel: React.FC<Props> = ({
+  isUpdate,
+  convId,
+  initialChnlState,
+  CloseChannelHandler,
+  updateConversations,
+}) => {
+  const [state, dispatch] = useReducer(reducer, initialChnlState);
+  const [chnlConvId, setChnlConvId] = useState<string>("");
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [errorKey, setErrorKey] = useState<string>("");
+  const [responseError, setResponseError] = useState<string>("");
+  const avatarRef = useRef<any>(null);
+  const imageFileRef = useRef<any>(null);
+  const refOption = useRef(null);
+  const router = useRouter();
+  const ImgPath = getImageBySize(state.avatar, 70);
+
+  const checkIsValidForm = () => {
+    if (isUpdate) {
+      if (state.name.length < 4 || state.name.length > 20) return "channelName";
+      else if (
+        (state?.password?.length > 0 ||
+          (initialChnlState.type !== "Protected" &&
+            state.type === "Protected")) &&
+        !validPassword.test(state.password)
+      ) {
+        return "channelPassword";
+      }
+    } else {
+      if (!validName.test(state.name)) return "channelName";
+      else if (
+        state.type === "Protected" &&
+        !validPassword.test(state.password)
+      )
+        return "channelPassword";
+      else if (state.members.length < 1) return "channelMembers";
+    }
+    return "";
+  };
+
+  const formSubmitHandler = async (event: any) => {
+    event.preventDefault();
+    let err = checkIsValidForm();
+    if (err?.length === 0) {
+      if (!isUpdate) {
+        await fetchCreateChannel(setChnlConvId, state, setResponseError);
+      } else if (convId) {
+        await fetchUpdateChannel(state, convId, imageFileRef, setResponseError);
+        updateConversations(convId);
+      }
+      CloseChannelHandler();
+    }
+    setErrorKey(err);
+  };
+
+  useEffect(() => {
+    const avatar = avatarRef.current;
+    const imgFile = imageFileRef.current;
+    imgFile?.addEventListener("change", () => {
+      avatar.src = URL.createObjectURL(imgFile.files[0]);
+    });
+  }, []);
+
+  useEffect(() => {
+    if (chnlConvId && errorKey.length === 0) {
+      updateConversations(chnlConvId);
+      router.push({ pathname: "/chat", query: { channel: chnlConvId } });
+      CloseChannelHandler();
+    }
+  }, [chnlConvId]);
+
+  const closeOptions = (v: boolean) => {
+    CloseChannelHandler();
+  };
+
+  useOutsideAlerter(refOption, closeOptions);
+  return (
+    <>
+      <motion.div
+        className={Styles.CreateChannelBackground}
+        initial={{
+          opacity: 0,
+        }}
+        animate={{
+          opacity: 1,
+        }}
+      >
+        <motion.div
+          initial={{
+            opacity: 0,
+            scale: 0.1,
+          }}
+          animate={{
+            opacity: 1,
+            scale: 1,
+          }}
+          ref={refOption}
+        >
+          <form
+            className={Styles.CreateChannelContainer}
+            onSubmit={formSubmitHandler}
+          >
+            <div className={Styles.CreateChannelHeader}>
+              <div>{!isUpdate ? "Create Channel" : "Update Channel"}</div>
+              <FiX
+                onClick={CloseChannelHandler}
+                style={{ cursor: "pointer" }}
+              />
+            </div>
+            {isUpdate && (
+              <label className={Styles.ImgContainer}>
+                <label className={Styles.avatar} htmlFor="channelImage">
+                  <img src={ImgPath} alt="channelImage" ref={avatarRef} />
+                </label>
+              </label>
+            )}
+            <label className={Styles.ChannelTxtInput} htmlFor="channelName">
+              Channel Name
+              <input
+                type={"text"}
+                value={state.name}
+                name="channelName"
+                onChange={(e) =>
+                  dispatch({ type: "name", name: e.target.value })
+                }
+              />
+              {errorKey === "channelName" && (
+                <p className={Styles.ChnlError}>{chnlError[errorKey]}</p>
+              )}
+            </label>
+            <div className={Styles.ChannelType}>
+              <span className={Styles.ChnlTypeContainer}>
+                Public
+                <input
+                  type="radio"
+                  name="channelType"
+                  value="Public"
+                  readOnly
+                  checked={state.type === "Public"}
+                />
+                <label
+                  className={Styles.Switch}
+                  htmlFor="Public"
+                  onClick={(e) => {
+                    dispatch({ type: "type", chnltype: "Public" });
+                  }}
+                ></label>
+              </span>
+              <span className={Styles.ChnlTypeContainer}>
+                Private
+                <input
+                  type="radio"
+                  name="channelType"
+                  value="Private"
+                  readOnly
+                  checked={state.type === "Private"}
+                />
+                <label
+                  className={Styles.Switch}
+                  htmlFor="Private"
+                  onClick={(e) => {
+                    dispatch({ type: "type", chnltype: "Private" });
+                  }}
+                ></label>
+              </span>
+              <span className={Styles.ChnlTypeContainer}>
+                Protected
+                <input
+                  type="radio"
+                  name="channelType"
+                  value="Protected"
+                  readOnly
+                  checked={state.type === "Protected"}
+                />
+                <label
+                  className={Styles.Switch}
+                  htmlFor="Protected"
+                  onClick={(e) => {
+                    dispatch({ type: "type", chnltype: "Protected" });
+                  }}
+                ></label>
+              </span>
+            </div>
+            {state.type === "Protected" && (
+              <div className={Styles.ChannelTxtInput}>
+                Password
+                <div className={Styles.ChannelPsswdInput}>
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    name="channelPassword"
+                    onChange={(e) =>
+                      dispatch({ type: "password", password: e.target.value })
+                    }
+                  ></input>
+                  {!showPassword ? (
+                    <img src={Eye.src} onClick={() => setShowPassword(true)} />
+                  ) : (
+                    <img
+                      src={CloseEye.src}
+                      onClick={() => setShowPassword(false)}
+                    />
+                  )}
+                </div>
+                {errorKey === "channelPassword" && (
+                  <p className={Styles.ChnlError}>{chnlError[errorKey]}</p>
+                )}
+              </div>
+            )}
+            {!isUpdate && (
+              <div className={Styles.ChannelTxtInput}>
+                Add members
+                <InsertChannelMembers
+                  state={state}
+                  dispatch={dispatch}
+                  chnlMembers={[]}
+                />
+                {errorKey === "channelMembers" && (
+                  <p className={Styles.ChnlError}>{chnlError[errorKey]}</p>
+                )}
+              </div>
+            )}
+            {responseError.length > 0 && (
+              <p className={Styles.ChnlError}>{responseError}</p>
+            )}
+            <input type="submit" value={!isUpdate ? "Create" : "Update"} />
+          </form>
+        </motion.div>
+      </motion.div>
+    </>
+  );
+};
